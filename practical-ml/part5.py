@@ -39,4 +39,3 @@ print(classification_report(y_test, pred))
 #The scores corresponding to every class will tell you the accuracy of the classifier in classifying the data 
 #points in that particular class compared to all other classes.
 #The support is the number of samples of the true response that lie in that class.
-

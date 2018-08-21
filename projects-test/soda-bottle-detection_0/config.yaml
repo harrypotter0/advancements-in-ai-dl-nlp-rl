@@ -1,0 +1,216 @@
+data:
+  dataset: {name: Soda Bottles, samples: 6615, type: private}
+  datasetLoadOption: batch
+  kfold: 1
+  mapping:
+    Filename:
+      options: {Augmentation: false, Height: '64', Normalization: false, Resize: true,
+        Scaling: 1, Width: '48', height_shift_range: 0, horizontal_flip: false, pretrained: None,
+        rotation_range: 0, shear_range: 0, vertical_flip: false, width_shift_range: 0}
+      port: InputPort0
+      shape: ''
+      type: Image
+    Label:
+      options: {}
+      port: OutputPort0
+      shape: ''
+      type: Categorical
+  numPorts: 1
+  samples: {split: 1, test: 0, training: 5292, validation: 1323}
+  shuffle: true
+model:
+  connections:
+  - {source: activation_737, target: dense_373}
+  - {source: dropout_118, target: dense_372}
+  - {source: batchnormalization_849, target: activation_736}
+  - {source: activation_735, target: dense_371}
+  - {source: flatten, target: dense_370}
+  - {source: convolution2d_2348, target: maxpooling2d_535}
+  - {source: convolution2d_2346, target: convolution2d_2347}
+  - {source: maxpooling2d_534, target: convolution2d_2345}
+  - {source: convolution2d_2343, target: convolution2d_2344}
+  - {source: convolution2d_2341, target: convolution2d_2342}
+  - {source: batchnormalization_848, target: maxpooling2d_533}
+  - {source: convolution2d_2339, target: convolution2d_2340}
+  - {source: convolution2d_2338, target: maxpooling2d_532}
+  - {source: Input_0, target: convolution2d_2337}
+  - {source: convolution2d_2337, target: convolution2d_2338}
+  - {source: maxpooling2d_532, target: convolution2d_2339}
+  - {source: convolution2d_2340, target: batchnormalization_848}
+  - {source: maxpooling2d_533, target: convolution2d_2341}
+  - {source: convolution2d_2342, target: convolution2d_2343}
+  - {source: convolution2d_2344, target: maxpooling2d_534}
+  - {source: convolution2d_2345, target: convolution2d_2346}
+  - {source: convolution2d_2347, target: convolution2d_2348}
+  - {source: maxpooling2d_535, target: flatten}
+  - {source: dense_370, target: activation_735}
+  - {source: dense_371, target: batchnormalization_849}
+  - {source: activation_736, target: dropout_118}
+  - {source: dense_372, target: activation_737}
+  - {source: dense_373, target: Output_0}
+  layers:
+  - args: {}
+    class: Input
+    name: Input_0
+    x: 60
+    y: 60
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 128,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2337
+    x: 60
+    y: 180
+  - args: {activation: linear, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 128,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2338
+    x: 60
+    y: 300
+  - args: {dim_ordering: th, strides: '(2, 2)'}
+    class: MaxPooling2D
+    name: maxpooling2d_532
+    x: 60
+    y: 420
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 64,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2339
+    x: 60
+    y: 540
+  - args: {activation: linear, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 64,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2340
+    x: 60
+    y: 660
+  - args: {}
+    class: BatchNormalization
+    name: batchnormalization_848
+    x: 60
+    y: 780
+  - args: {dim_ordering: th, strides: '(2, 2)'}
+    class: MaxPooling2D
+    name: maxpooling2d_533
+    x: 60
+    y: 900
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2341
+    x: 60
+    y: 1020
+  - args: {activation: linear, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2342
+    x: 60
+    y: 1140
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2343
+    x: 410
+    y: 60
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2344
+    x: 410
+    y: 180
+  - args: {dim_ordering: th, strides: '(2, 2)'}
+    class: MaxPooling2D
+    name: maxpooling2d_534
+    x: 410
+    y: 300
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2345
+    x: 410
+    y: 420
+  - args: {activation: linear, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2346
+    x: 410
+    y: 540
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2347
+    x: 410
+    y: 660
+  - args: {activation: relu, border_mode: same, dim_ordering: th, nb_col: 2, nb_filter: 32,
+      nb_row: 2}
+    class: Convolution2D
+    name: convolution2d_2348
+    x: 410
+    y: 780
+  - args: {dim_ordering: th, strides: '(2, 2)'}
+    class: MaxPooling2D
+    name: maxpooling2d_535
+    x: 410
+    y: 900
+  - args: {}
+    class: Flatten
+    name: flatten
+    x: 410
+    y: 1020
+  - args: {activation: linear, output_dim: 2048}
+    class: Dense
+    name: dense_370
+    x: 410
+    y: 1140
+  - args: {activation: relu}
+    class: Activation
+    name: activation_735
+    x: 760
+    y: 60
+  - args: {activation: linear, output_dim: 1024}
+    class: Dense
+    name: dense_371
+    x: 760
+    y: 180
+  - args: {}
+    class: BatchNormalization
+    name: batchnormalization_849
+    x: 760
+    y: 300
+  - args: {activation: relu}
+    class: Activation
+    name: activation_736
+    x: 760
+    y: 420
+  - args: {p: 0.4}
+    class: Dropout
+    name: dropout_118
+    x: 760
+    y: 540
+  - args: {activation: linear, output_dim: 1024}
+    class: Dense
+    name: dense_372
+    x: 760
+    y: 660
+  - args: {activation: relu}
+    class: Activation
+    name: activation_737
+    x: 760
+    y: 780
+  - args: {activation: softmax, output_dim: 8}
+    class: Dense
+    name: dense_373
+    x: 760
+    y: 900
+  - args: {}
+    class: Output
+    name: Output_0
+    x: 760
+    y: 1020
+params:
+  advance_params: true
+  batch_size: 32
+  is_custom_loss: false
+  loss_func: categorical_crossentropy
+  num_epoch: 10
+  optimizer: {name: Adadelta}
+project: soda-bottle-detection

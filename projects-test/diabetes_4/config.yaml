@@ -1,0 +1,93 @@
+data:
+  dataset: {name: pima-indians-diabetes-database, samples: 767, type: private}
+  datasetLoadOption: full
+  kfold: 1
+  mapping:
+    Age:
+      options: {Normalization: false, Scaling: 1}
+      port: InputPort0
+      shape: ''
+      type: Numeric
+    BMI:
+      options: {Normalization: false, Scaling: 1}
+      port: InputPort0
+      shape: ''
+      type: Numeric
+    BloodPressure:
+      options: {Normalization: false, Scaling: 1}
+      port: InputPort0
+      shape: ''
+      type: Numeric
+    DiabetesPedigreeFunction:
+      options: {Normalization: false, Scaling: 1}
+      port: InputPort0
+      shape: ''
+      type: Numeric
+    Glucose:
+      options: {Normalization: false, Scaling: 1}
+      port: InputPort0
+      shape: ''
+      type: Numeric
+    Insulin:
+      options: {Normalization: false, Scaling: 1}
+      port: InputPort0
+      shape: ''
+      type: Numeric
+    Outcome:
+      options: {Normalization: false, Scaling: 1}
+      port: OutputPort0
+      shape: ''
+      type: Numeric
+    Pregnancies:
+      options: {Normalization: false, Scaling: 1}
+      port: InputPort0
+      shape: ''
+      type: Numeric
+    SkinThickness:
+      options: {Normalization: false, Scaling: 1}
+      port: InputPort0
+      shape: ''
+      type: Numeric
+  numPorts: 1
+  samples: {split: 1, test: 0, training: 613, validation: 153}
+  shuffle: true
+model:
+  connections:
+  - {source: Dense_55, target: Output_1}
+  - {source: Dense_5, target: Dense_55}
+  - {source: Dense_26, target: Dense_5}
+  - {source: Input_1, target: Dense_26}
+  layers:
+  - args: {}
+    class: Input
+    name: Input_1
+    x: 385
+    y: 12
+  - args: {activation: relu, output_dim: '8'}
+    class: Dense
+    name: Dense_5
+    x: 387
+    y: 206
+  - args: {}
+    class: Output
+    name: Output_1
+    x: 390
+    y: 404
+  - args: {activation: relu, output_dim: '12'}
+    class: Dense
+    name: Dense_26
+    x: 386
+    y: 109
+  - args: {activation: softmax, output_dim: '1'}
+    class: Dense
+    name: Dense_55
+    x: 397
+    y: 297
+params:
+  advance_params: true
+  batch_size: 10
+  is_custom_loss: false
+  loss_func: binary_crossentropy
+  num_epoch: 150
+  optimizer: {name: Adam}
+project: diabetes
